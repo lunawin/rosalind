@@ -20,7 +20,7 @@ UGA Stop   CGA R      AGA R      GGA G
 UGG W      CGG R      AGG R      GGG G 
 """.strip
 
-var codon_table = Table[string, string]()
+var codon_table* = Table[string, string]()
 var stop_codons: seq[string]
 for line in codon_table_str.splitLines:
     var raw_splt = line.splitWhitespace()
@@ -32,14 +32,16 @@ for line in codon_table_str.splitLines:
         else:
             stop_codons.add(codon)
 
+proc translate*(rna: string): string =
+    for i in countup(0, rna.len, 3):
+        var codon = rna[i ..< (i + 3)]
+        if codon in stop_codons:
+            break
+        result.add codon_table[codon]
+    return result
+
 ##############################################
 
-var content = readFile("rosalind_prot.txt").strip
-
-var translation_result = ""
-for i in countup(0, content.len, 3):
-    var codon = content[i ..< (i+3)]
-    if codon in stop_codons:
-        break
-    translation_result.add codon_table[codon]
-echo translation_result
+when isMainModule:
+    var content = readFile("rosalind_prot.txt").strip
+    echo translate(content)
