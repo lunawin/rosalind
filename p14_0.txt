@@ -1,0 +1,9 @@
+normally projects from 01 to 13 have been done in order, 
+meaning 01 is first problem in rosalind and 13 is 13th 
+problem in rosalind. After this file going forwards, 
+there will be no guaranteed order, i will do what i can do
+
+going forward, files will be named p(increasing number)_problemcode.
+
+Anyway, i am writing horrible code
+:pray:
