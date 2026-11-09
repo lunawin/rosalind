@@ -21,7 +21,7 @@ UGG W      CGG R      AGG R      GGG G
 """.strip
 
 var codon_table* = Table[string, string]()
-var stop_codons: seq[string]
+var stop_codons*: seq[string]
 for line in codon_table_str.splitLines:
     var raw_splt = line.splitWhitespace()
     for index in 0..<(raw_splt.len div 2):
